@@ -19,11 +19,9 @@ namespace LinkedList
 
         public NodeOperation()
         {
-
             head.Value = 1;
             head.Next = null;
             current = head;
-
         }
 
         public void InsertAtLast(int value)
