@@ -14,57 +14,75 @@ namespace LinkedList
 
     public class NodeOperation
     {
-        Node head = new Node();
-        Node current;
+        Node head = null;
 
-        public NodeOperation()
+        public bool IsNull() 
         {
-
-            head.Value = 1;
-            head.Next = null;
-            current = head;
-
+            if (head == null) 
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
 
         public void InsertNodeAtFirst(int value) 
         {
-            Node nodeToAddFirst = new Node();
+            Node newNode = new Node();
 
-            nodeToAddFirst.Value = value;
-            nodeToAddFirst.Next = head;
-            head = nodeToAddFirst;
+            if (IsNull()) 
+            {
+                head = newNode;
+                head.Value = value;
+                head.Next = null;
+            }
+            else
+            {
+                Node tempHead = head;
+                newNode.Value = value;
+                newNode.Next = tempHead;
+                head = newNode;
+            }
         }
 
 
         public void InsertNodeAtLast(int value)
         {
-
-            Node nodeToAddLast = new Node();
-            nodeToAddLast.Value = value;
-
-            while (current.Next != null)
+            if (IsNull()) 
             {
-                current = current.Next;
+                Node newNode = new Node();
+                newNode.Value = value;
+                newNode.Next = null;
+                head = newNode;
             }
+            else
+            {
+                Node newNode = new Node();
+                
+                Node lastFoundNode = head;
+                
+                while (lastFoundNode.Next != null)
+                {
+                    lastFoundNode = lastFoundNode.Next;
+                }
 
-            current.Next = nodeToAddLast;
-
+                lastFoundNode.Next = newNode;
+                newNode.Value = value;
+                
+            }
         }
 
         public void Print()
         {
-            for (Node currentNode = head; currentNode != null;)
+            var tempNode = head;
+            while (tempNode != null)
             {
-                Console.WriteLine(currentNode.Value);
-                currentNode = currentNode.Next;
+                Console.WriteLine(tempNode.Value);
+                tempNode = tempNode.Next;
             }
-
-            //var tempNode = head;
-            //while (tempNode != null)
-            //{
-            //    Console.WriteLine(tempNode.Value);
-            //    tempNode = tempNode.Next;
-            //}
         }
     }
 }
