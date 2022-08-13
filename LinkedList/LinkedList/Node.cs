@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,23 +19,35 @@ namespace LinkedList
 
         public NodeOperation()
         {
+
             head.Value = 1;
             head.Next = null;
             current = head;
+
         }
 
-        public void InsertAtLast(int value)
+        public void InsertNodeAtFirst(int value) 
+        {
+            Node nodeToAddFirst = new Node();
+
+            nodeToAddFirst.Value = value;
+            nodeToAddFirst.Next = head;
+            head = nodeToAddFirst;
+        }
+
+
+        public void InsertNodeAtLast(int value)
         {
 
-            Node lastNodeToAdd = new Node();
-            lastNodeToAdd.Value = value;
+            Node nodeToAddLast = new Node();
+            nodeToAddLast.Value = value;
 
             while (current.Next != null)
             {
                 current = current.Next;
             }
 
-            current.Next = lastNodeToAdd;
+            current.Next = nodeToAddLast;
 
         }
 
@@ -47,11 +59,11 @@ namespace LinkedList
                 currentNode = currentNode.Next;
             }
 
-            //var current = head;
-            //while (current != null)
+            //var tempNode = head;
+            //while (tempNode != null)
             //{
-            //    Console.WriteLine(current.Value);
-            //    current = current.Next;
+            //    Console.WriteLine(tempNode.Value);
+            //    tempNode = tempNode.Next;
             //}
         }
     }
